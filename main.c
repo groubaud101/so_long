@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 15:24:09 by user42            #+#    #+#             */
-/*   Updated: 2021/09/01 18:36:10 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/07 18:58:08 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int main(int ac, char **av)
 	t_so_long	ptr;
 
 	if (ac < 2)
-		return (ft_printf_fd(2, "Where is the map ?\n"));
+		return (ft_printf_fd(1, "Error : Where is the map ?\n"));
 	ptr.map = ft_init_map(av[1]);	
 	if (ptr.map == NULL)
-		return (ft_printf_fd(2, "Error map\n"));
+		return (ft_printf_fd(1, "Error map\n"));
 	ft_puttab(ptr.map, "\n");
 /*
 	mlx_ptr = mlx_init();
@@ -40,5 +40,7 @@ int main(int ac, char **av)
 	if (win_ptr == NULL)
 		return (ft_printf_fd(2, "mlx_new_win fails to connect\n"));
 	mlx_loop(mlx_ptr);
-*/	return (0);
+*/
+	ft_printf("OK map\n");
+	return (0);
 }

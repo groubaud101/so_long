@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/09/06 19:16:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/07 19:26:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 # define CHECK_ERR 0
 # define CHECK_OK 1
 
+# define SET_CHAR "01EPC"
 # define FLOOR '0'
 # define WALL '1'
 # define EXIT 'E'
 # define PLAYER 'P'
+# define COLECT 'C'
 
 typedef struct	s_map
 {
@@ -42,12 +44,14 @@ typedef struct	s_so_long
 
 }t_so_long;
 
-int		ft_window(void);
-void	*ft_free_list_map(t_map **start);
+t_map	*ft_free_list_map(t_map **start);
 char	**ft_init_map(char *path);
+
+t_map	*ft_create_lstmap(int fd);
 
 int	ft_check_path(char *path);
 int	ft_check_first_and_last_line(char *line);
 int	ft_check_correct_line(char *set, char *line);
+int	ft_check_enough_object(t_map *ptr, int *nb_line);
 
 #endif

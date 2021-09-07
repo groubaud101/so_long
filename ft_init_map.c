@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/09/06 19:06:28 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/07 19:25:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static char	**ft_tab_map(t_map *ptr, int nb_line)
 char	**ft_init_map(char *path)
 {
 	int		fd;
-	int		nb_line;
 	t_map	*map;
 	char	**tab;
+	int		nb_line;
 
 	nb_line = 0;
 	if (ft_check_path(path) == CHECK_ERR)
@@ -68,17 +68,20 @@ char	**ft_init_map(char *path)
 		return (NULL);
 
 	ft_printf("LST map :\n");
-	map = ft_create_lstmap(fd, &nb_line);
-	ft_aff_list(map);
-	if (!map || nb_line == 0)
+	map = ft_create_lstmap(fd);
+	close (fd);
+	if (ft_check_enough_object(map, &nb_line) == CHECK_ERR)
 	{
-		close (fd);
-		return (ft_free_list_map(&map));
+		ft_free_list_map(&map);
+		return (NULL);
 	}
+
+	ft_aff_list(map);
+
+	if (!map)
+		return (NULL);
 	ft_printf("TAB map :\n");
-	tab = ft_tab_map(map, nb_line);
-	if (!tab)
-		return (ft_free_list_map(&map));
+	tab = ft_tab_map(map, nb_line); // pas besoin de verifier car pas utilisé av ret
 	ft_free_list_map(&map);
 	return (tab);
 }
