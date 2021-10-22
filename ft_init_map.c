@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/10/19 18:00:45 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 09:12:42 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char	**ft_init_map(char *path)
 	ft_printf("LST map :\n");
 	map = ft_create_lstmap(fd);
 	close (fd);
+	if (!map)
+		return (NULL);
 	if (ft_check_enough_object(map, &nb_line) == CHECK_ERR)
 	{
 		ft_free_list_map(&map);

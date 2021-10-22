@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:04:36 by user42            #+#    #+#             */
-/*   Updated: 2021/10/22 09:05:09 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 09:20:17 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ static int	ft_mapnew(int fd, t_map **tmp)
 
 	ptr = (t_map *)malloc(sizeof(*ptr));
 	if (!ptr)
-		return (CHECK_ERR);
+		return (-1);
 	ptr->line = NULL;
 	ptr->next = NULL;
 	ret = get_next_line(fd, &(ptr->line));
 	if (ret == -1)
+	{
+		free(ptr);
 		return (CHECK_ERR);
+	}
 	*tmp = ptr;
 	return (ret);
 }
