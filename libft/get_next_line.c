@@ -21,8 +21,6 @@ static int	ft_separate(char *tmp, char *buff, char **line)
 
 	if (tmp == NULL)
 		tmp = buff;
-	if (!tmp[0])
-		return (1);
 	i = -1;
 	len = ft_isinstr_gnl('\n', tmp);
 	if (len == -1)
@@ -94,6 +92,6 @@ int	get_next_line(int fd, char **line)
 		return (ft_free_gnl(&tmp, &buff[fd], 1));
 	if (ft_separate(tmp, buff[fd], line) == -1)
 		return (ft_free_gnl(&tmp, &buff[fd], 1));
-	ft_free_gnl(&tmp, &buff[fd], (rd == 0 && (!tmp || !tmp[0])));
+	ft_free_gnl(&tmp, &buff[fd], (rd == 0 && tmp != NULL));
 	return (rd > 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_lstmap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:04:36 by user42            #+#    #+#             */
-/*   Updated: 2021/09/07 19:20:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/22 09:05:09 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "get_next_line.h"
 #include "libft.h"
 
-#include "ft_printf.h"
 
 static int	ft_mapnew(int fd, t_map **tmp)
 {

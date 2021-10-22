@@ -3,30 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
+#    By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 15:34:29 by user42            #+#    #+#              #
-#    Updated: 2021/09/07 12:40:25 by user42           ###   ########.fr        #
+#    Updated: 2021/10/18 17:21:31 by groubaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
 DIR_FT	=	./libft
-DIR_MLX	=	./minilibx-linux
+DIR_MLX	=	./
 DIR_S	=	./
 
 LIBFT	=	-L $(DIR_FT) -lft
-LIBMLX	=	-L $(DIR_MLX) -lmlx -lXext -lX11
+LIBMLX	=	-L $(DIR_MLX) -lmlx
 LIB		=	$(LIBFT) $(LIBMLX)
 
 I_INC	=	-I $(DIR_FT)/include -I. -I $(DIR_MLX)
 
 INC_L	=	$(DIR_L)/include/
 INC_LIB	=	printf get_next_line libft
-INCLUDE	=	$(DIR_MLX) $(addprefix $(INC_L), $(addsuffix .h, $(H_INC))) ft_$(NAME).h
+INCLUDE	=	mlx.h ft_$(NAME).h
 
-SRC		=	init_map free_list_map create_lstmap check
+SRC		=	init_map free_list_map create_lstmap check map_err_msg
 
 OBJS	=	main.o $(addprefix $(DIR_S)ft_, $(addsuffix .o, $(SRC)))
 
@@ -41,7 +41,7 @@ all		:	$(NAME)
 	
 lib		:
 			make -C $(DIR_FT)
-			make -C $(DIR_MLX)
+#			make -C $(DIR_MLX)
 
 $(NAME)	:	$(OBJS) $(INCLUDE)
 #			make lib

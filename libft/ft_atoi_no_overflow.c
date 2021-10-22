@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_no_overflow.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/16 18:13:33 by user42            #+#    #+#             */
-/*   Updated: 2021/08/13 17:59:17 by user42           ###   ########.fr       */
+/*   Created: 2021/10/18 16:29:30 by groubaud          #+#    #+#             */
+/*   Updated: 2021/10/18 16:45:26 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 int	ft_atoi_no_overflow(const char *nbr)
 {
-	int	index;
-	int	neg;
-	int	nb;
-	int	limit;
+	unsigned int	index;
+	int				neg;
+	unsigned int	limit_div;
+	int				limit_mod;
+	unsigned int	nb;
 
 	index = 0;
 	nb = 0;
@@ -28,16 +29,15 @@ int	ft_atoi_no_overflow(const char *nbr)
 	if (nbr[index] == '+' || nbr[index] == '-')
 		if (nbr[index++] == '-')
 			neg = -1;
-	limit = INT_MAX / 10;
+	limit_div = INT_MAX / 10;
+	limit_mod = INT_MAX % 10;
 	while (ft_isdigit(nbr[index]) == 1)
 	{
-		if (nb > limit)
-			return (0);
-		nb = (nb * 10) + (nbr[index] - '0');
-		if (nb < 0)
-			if (!(nb == INT_MIN && neg == -1))
+		if (nb > limit_div
+			|| (nb == limit_div && nbr[index] - '0' - (neg < 0) > limit_mod))
 				return (0);
+		nb = (nb * 10) + (nbr[index] - '0');
 		index++;
 	}
-	return ((int)(nb * neg));
+	return ((unsigned int)nb * neg);
 }

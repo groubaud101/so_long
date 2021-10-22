@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/09/07 19:26:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/19 18:00:52 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 
 # include <mlx.h>
 # include <stddef.h>
+
+# define LINE_NOT_ONLY_WALL 0
+# define MAP_NOT_FOUND 1
+# define NOT_BER 2
+# define NO_MAP 3
+# define NOT_START_WALL 4
+# define NOT_END_WALL 5
+# define WRONG_CHR 6
+# define MISSING_PEC 7
+# define FAIL_OPEN 8
 
 # define CHECK_ERR 0
 # define CHECK_OK 1
@@ -53,5 +63,6 @@ int	ft_check_path(char *path);
 int	ft_check_first_and_last_line(char *line);
 int	ft_check_correct_line(char *set, char *line);
 int	ft_check_enough_object(t_map *ptr, int *nb_line);
+int	ft_map_err_msg(int num_err);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/09/07 19:25:54 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/19 18:00:45 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ char	**ft_init_map(char *path)
 		return (NULL);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
+	{
+		ft_map_err_msg(FAIL_OPEN);
 		return (NULL);
+	}
 
 	ft_printf("LST map :\n");
 	map = ft_create_lstmap(fd);

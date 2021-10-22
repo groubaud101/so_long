@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:06:40 by user42            #+#    #+#             */
-/*   Updated: 2021/09/07 19:26:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/19 18:00:27 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,20 @@
 
 int	ft_check_path(char *path)
 {
-	int	len;
-	int	i;
-	char *ber;
+	int		len;
+	int		i;
+	char	*ber;
 
 	ber = ".ber";
 	len = ft_strlen(path);
 	len = len - 4;
+	if (len < 0)
+		return (ft_map_err_msg(NOT_BER));
 	i = 0;
 	while (path[len])
 	{
 		if (path[len++] != ber[i++])
-			return (CHECK_ERR);
+			return (ft_map_err_msg(NOT_BER));
 	}
 	return (CHECK_OK);
 }
@@ -37,11 +39,11 @@ int	ft_check_first_and_last_line(char *line)
 
 	i = 0;
 	if (!line)
-		return (CHECK_ERR);
+		return (ft_map_err_msg(NO_MAP));
 	while (line[i])
 	{
 		if (line[i++] != WALL)
-			return (CHECK_ERR);
+			return (ft_map_err_msg(LINE_NOT_ONLY_WALL));
 	}
 	return (CHECK_OK);
 }
@@ -52,14 +54,14 @@ int	ft_check_correct_line(char *set, char *line)
 
 	i = 0;
 	if (line[0] != WALL)
-		return (CHECK_ERR);
+		return (ft_map_err_msg(NOT_START_WALL));
 	while (line[i + 1])
 	{
 		if (ft_isinstr(line[i++], set) == -1)
-			return (CHECK_ERR);
+			return (ft_map_err_msg(WRONG_CHR));
 	}
 	if (line[i] != WALL)
-		return (CHECK_ERR);
+		return (ft_map_err_msg(NOT_END_WALL));
 	return (CHECK_OK);
 }
 
@@ -87,6 +89,6 @@ int	ft_check_enough_object(t_map *ptr, int *nb_line)
 		ptr = ptr->next;
 	}
 	if (!p || !e || !c)
-		return (CHECK_ERR);
+		return (ft_map_err_msg(MISSING_PEC));
 	return (CHECK_OK);
 }

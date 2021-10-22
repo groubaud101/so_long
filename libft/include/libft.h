@@ -156,6 +156,7 @@ void	ft_putstr(const char *s);
 void	ft_putnstr(const char *str, int n);
 void	ft_putstr_fd(const char *s, int fd);
 void	ft_putnstr_fd(const char *str, int fd, int n);
+void	ft_puterror(const char *str);
 void	ft_putendl(char *s);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr(int n);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 15:24:09 by user42            #+#    #+#             */
-/*   Updated: 2021/09/07 18:58:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/19 18:02:20 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ int main(int ac, char **av)
 	t_so_long	ptr;
 
 	if (ac < 2)
-		return (ft_printf_fd(1, "Error : Where is the map ?\n"));
+	{
+		ft_putstr("Error\nWhere is the map ?\n");
+		return (1);
+	}
 	ptr.map = ft_init_map(av[1]);	
 	if (ptr.map == NULL)
-		return (ft_printf_fd(1, "Error map\n"));
+		return (1);
 	ft_puttab(ptr.map, "\n");
 /*
 	mlx_ptr = mlx_init();
