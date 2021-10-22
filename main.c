@@ -6,13 +6,12 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 15:24:09 by user42            #+#    #+#             */
-/*   Updated: 2021/10/19 18:02:20 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 13:51:21 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
-#include "ft_printf.h"
-#include <stddef.h>
+//#include <stddef.h>
 
 //mlx_new_window (void *mlx_ptr, int size_x, int size_y, char *title)
 //mlx_clear_window  (void *mlx_ptr, void *win_ptr)
@@ -33,6 +32,7 @@ int main(int ac, char **av)
 	ptr.map = ft_init_map(av[1]);	
 	if (ptr.map == NULL)
 		return (1);
+	ft_printf("la map :\n");
 	ft_puttab(ptr.map, "\n");
 /*
 	mlx_ptr = mlx_init();

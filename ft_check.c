@@ -6,12 +6,11 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:06:40 by user42            #+#    #+#             */
-/*   Updated: 2021/10/19 18:00:27 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 14:16:12 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
-#include "libft.h"
 
 int	ft_check_path(char *path)
 {

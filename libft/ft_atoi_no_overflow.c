@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:29:30 by groubaud          #+#    #+#             */
-/*   Updated: 2021/10/18 16:45:26 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 14:11:57 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_atoi_no_overflow(const char *nbr)
 	{
 		if (nb > limit_div
 			|| (nb == limit_div && nbr[index] - '0' - (neg < 0) > limit_mod))
-				return (0);
+			return (0);
 		nb = (nb * 10) + (nbr[index] - '0');
 		index++;
 	}

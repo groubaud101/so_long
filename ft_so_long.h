@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/10/22 13:40:02 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 14:23:02 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <mlx.h>
 # include <stddef.h>
+
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 # define LINE_NOT_ONLY_WALL 0
 # define MAP_NOT_FOUND 1
@@ -39,13 +43,13 @@
 # define PLAYER 'P'
 # define COLECT 'C'
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char			*line;
 	struct s_map	*next;
 }t_map;
 
-typedef struct	s_so_long
+typedef struct s_so_long
 {
 	int		x_win;
 	int		y_win;
@@ -62,12 +66,10 @@ char	**ft_init_map(char *path);
 
 t_map	*ft_create_lstmap(int fd);
 
-int	ft_check_path(char *path);
-int	ft_check_first_and_last_line(char *line);
-int	ft_check_correct_line(char *set, char *line);
-int	ft_check_enough_object(t_map *ptr, int *nb_line);
-int	ft_map_err_msg(int num_err);
-
-#include <stdio.h>
+int		ft_check_path(char *path);
+int		ft_check_first_and_last_line(char *line);
+int		ft_check_correct_line(char *set, char *line);
+int		ft_check_enough_object(t_map *ptr, int *nb_line);
+int		ft_map_err_msg(int num_err);
 
 #endif
