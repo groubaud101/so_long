@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:16:16 by groubaud          #+#    #+#             */
-/*   Updated: 2021/10/19 17:19:26 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 13:34:01 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,9 @@ int	ft_map_err_msg(int num_err)
 		ft_putstr("The map must have at least one player/exit/collectible\n");
 	else if (num_err == FAIL_OPEN)
 		ft_putstr("Couldn't open the file with the good right\n");
+	else if (num_err == NOT_RECTANGULAR)
+		ft_putstr("The map is not rectangular\n");
+	else if (num_err == ERR_MALLOC)
+		ft_putstr("Malloc or read fail\n");
 	return (CHECK_ERR);
 }

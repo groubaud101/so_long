@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/10/19 18:00:52 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 13:40:02 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define WRONG_CHR 6
 # define MISSING_PEC 7
 # define FAIL_OPEN 8
+# define NOT_RECTANGULAR 9
+# define EMPTY_LINE 10
+# define ERR_MALLOC 11
 
 # define CHECK_ERR 0
 # define CHECK_OK 1
@@ -54,7 +57,7 @@ typedef struct	s_so_long
 
 }t_so_long;
 
-t_map	*ft_free_list_map(t_map **start);
+void	*ft_free_list_map(t_map **start, int num_err);
 char	**ft_init_map(char *path);
 
 t_map	*ft_create_lstmap(int fd);
@@ -64,5 +67,7 @@ int	ft_check_first_and_last_line(char *line);
 int	ft_check_correct_line(char *set, char *line);
 int	ft_check_enough_object(t_map *ptr, int *nb_line);
 int	ft_map_err_msg(int num_err);
+
+#include <stdio.h>
 
 #endif

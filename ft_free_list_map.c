@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_list_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 18:16:12 by user42            #+#    #+#             */
-/*   Updated: 2021/09/06 19:19:13 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/22 13:37:55 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ static void	ft_lstdelone(t_map *lst)
 	free(lst);
 }
 
-t_map	*ft_free_list_map(t_map **start)
+void	*ft_free_list_map(t_map **start, int num_err)
 {
 	t_map	*tmp;
 
+	if (num_err >= 0)
+		ft_map_err_msg(num_err);
 	if (!start || !(*start))
 		return (NULL);
 	tmp = (*start)->next;

@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:04:36 by user42            #+#    #+#             */
-/*   Updated: 2021/10/22 09:20:17 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 13:35:49 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_mapnew(int fd, t_map **tmp)
 	if (ret == -1)
 	{
 		free(ptr);
-		return (CHECK_ERR);
+		return (-1);
 	}
 	*tmp = ptr;
 	return (ret);
@@ -64,30 +64,33 @@ t_map	*ft_create_lstmap(int fd)
 	if (ret == -1)
 		return (NULL);
 	if (ft_check_first_and_last_line(new_list->line) == CHECK_ERR)
-		return (ft_free_list_map(&new_list));
+		return (ft_free_list_map(&new_list, -1));
+
 	prev_len = ft_strlen(new_list->line);
 	tmp = new_list;
 	while (ret > 0)
 	{
 		ret = ft_mapnew(fd, &tmp);
 		if (ret == -1)
-			return (ft_free_list_map(&new_list));
+			return (ft_free_list_map(&new_list, ERR_MALLOC));
 
-		if (!tmp->line)
-			break ;
 		ft_lstadd_map(&new_list, tmp);
 
 		len = ft_strlen(tmp->line);
-		if (prev_len != len
-			|| ft_check_correct_line(SET_CHAR, tmp->line) == CHECK_ERR)
-			return (ft_free_list_map(&new_list));
+		if (len == 0)
+			return (ft_free_list_map(&new_list, EMPTY_LINE));
+		if (prev_len != len)
+			return (ft_free_list_map(&new_list, NOT_RECTANGULAR));
+		
+		if (ft_check_correct_line(SET_CHAR, tmp->line) == CHECK_ERR)
+			return (ft_free_list_map(&new_list, -1));
 		prev_len = len;
 	}
 	tmp = new_list;
 	while (tmp->next)
 		tmp = tmp->next;
 	if (ft_check_first_and_last_line(tmp->line) == CHECK_ERR)
-		return (ft_free_list_map(&new_list));
+		return (ft_free_list_map(&new_list, -1));
 
 	return (new_list);
 }

@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/10/22 09:12:42 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 13:38:57 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,7 @@ char	**ft_init_map(char *path)
 	if (!map)
 		return (NULL);
 	if (ft_check_enough_object(map, &nb_line) == CHECK_ERR)
-	{
-		ft_free_list_map(&map);
-		return (NULL);
-	}
+		return (ft_free_list_map(&map, -1));
 
 	ft_aff_list(map);
 
@@ -87,6 +84,6 @@ char	**ft_init_map(char *path)
 		return (NULL);
 	ft_printf("TAB map :\n");
 	tab = ft_tab_map(map, nb_line); // pas besoin de verifier car pas utilisé av ret
-	ft_free_list_map(&map);
+	ft_free_list_map(&map, -1);
 	return (tab);
 }
