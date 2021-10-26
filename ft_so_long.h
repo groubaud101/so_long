@@ -6,19 +6,20 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/10/22 14:23:02 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/26 17:04:02 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SO_LONG_H
 # define FT_SO_LONG_H
 
-# include <mlx.h>
+# include "mlx.h"
 # include <stddef.h>
 
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
+# include "ft_colors.h"
 
 # define LINE_NOT_ONLY_WALL 0
 # define MAP_NOT_FOUND 1
@@ -32,6 +33,9 @@
 # define NOT_RECTANGULAR 9
 # define EMPTY_LINE 10
 # define ERR_MALLOC 11
+# define FAIL_MLX_PTR 12
+# define FAIL_MLX_WIN 13
+# define FAIL_MLX_IMG 14
 
 # define CHECK_ERR 0
 # define CHECK_OK 1
@@ -49,16 +53,37 @@ typedef struct s_map
 	struct s_map	*next;
 }t_map;
 
+typedef struct s_wall_data
+{
+	int	len_x;
+	int	len_y;
+	int	size;
+}
+t_wall_data;
+
+typedef struct s_floor_data
+{
+	int	len;
+	int	size;
+}
+t_floor_data;
+
+typedef struct s_data
+{
+	void	*img_ptr;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}t_data;
+
 typedef struct s_so_long
 {
 	int		x_win;
 	int		y_win;
-	int		x_pic;
-	int		y_pic;
 	int		x_map;
 	int		y_map;
 	char	**map;
-
 }t_so_long;
 
 void	*ft_free_list_map(t_map **start, int num_err);
@@ -71,5 +96,27 @@ int		ft_check_first_and_last_line(char *line);
 int		ft_check_correct_line(char *set, char *line);
 int		ft_check_enough_object(t_map *ptr, int *nb_line);
 int		ft_map_err_msg(int num_err);
+
+// ft_mlx_pixel_put.c
+void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+// ft_geometric_figure.c
+void	ft_rectangle(t_data *img, int start_x, int start_y,
+					int len_x, int len_y, int color);
+
+// ft_texture_wall.c
+void	ft_texture_wall(t_data *img, int start_x, int start_y, int half);
+
+// ft_texture_floor.c
+void	ft_texture_floor(t_data *img, int start_x, int start_y, int half);
+
+// ft_foreground_layer.c
+void	ft_foreground_layer(int wall_start_x, int wall_start_y,
+							t_so_long *ptr, t_data *img);
+
+// ft_so_long.c
+int		ft_so_long(t_so_long *ptr);
+
+
 
 #endif

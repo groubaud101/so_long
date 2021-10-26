@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:16:16 by groubaud          #+#    #+#             */
-/*   Updated: 2021/10/22 14:21:43 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:01:50 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,21 @@ static void	ft_format_map_msg(int num_err)
 		ft_putstr("There is an empty line in the file of the map\n");
 }
 
+static void	ft_error_mlx_msg(int num_err)
+{
+	if (num_err == FAIL_MLX_PTR)
+		ft_putstr("Fail mlx init\n");
+	else if (num_err == FAIL_MLX_WIN)
+		ft_putstr("Faiure to create the window with mlx\n");
+	else if (num_err == FAIL_MLX_IMG)
+		ft_putstr("Faiure to create the image with mlx\n");
+}
+
 int	ft_map_err_msg(int num_err)
 {
 	ft_putstr("Error\n");
 	ft_format_map_msg(num_err);
+	ft_error_mlx_msg(num_err);
 	if (num_err == MAP_NOT_FOUND)
 		ft_putstr("Map not found\n");
 	else if (num_err == NOT_BER)
