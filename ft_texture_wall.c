@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:27:41 by groubaud          #+#    #+#             */
-/*   Updated: 2021/10/26 16:41:42 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/29 15:50:55 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_wall_data	ft_init_wall_data(void)
 	return (wall);
 }
 
-void	ft_texture_wall(t_data *img, int start_x, int start_y, int half)
+void	ft_texture_wall(t_mlx *mlx, int start_x, int start_y, int half)
 {
 	t_wall_data	wall;
 	int			x;
@@ -30,22 +30,22 @@ void	ft_texture_wall(t_data *img, int start_x, int start_y, int half)
 
 	y = start_y;
 	wall = ft_init_wall_data();
-	ft_rectangle(img, start_x, start_y, wall.size, wall.size, WHITE);
+	ft_rectangle(mlx, start_x, start_y, wall.size, wall.size, WHITE);
 	while (y + wall.len_y <= wall.size + start_y)
 	{
 		x = start_x;
 		if (half % 2 == 1)
 		{
-			ft_rectangle(img, x, y, wall.len_x / 2, wall.len_y, BRICK);
+			ft_rectangle(mlx, x, y, wall.len_x / 2, wall.len_y, BRICK);
 			x += (wall.len_x / 2) + 2;
 		}
 		while (x + wall.len_x <= wall.size + start_x)
 		{
-			ft_rectangle(img, x, y, wall.len_x, wall.len_y, BRICK);
+			ft_rectangle(mlx, x, y, wall.len_x, wall.len_y, BRICK);
 			x += wall.len_x + 2;
 		}
 		if (half % 2 == 1)
-			ft_rectangle(img, x, y, wall.len_x / 2 + 1, wall.len_y, BRICK);
+			ft_rectangle(mlx, x, y, wall.len_x / 2 + 1, wall.len_y, BRICK);
 		y += wall.len_y + 2;
 		half++;
 	}

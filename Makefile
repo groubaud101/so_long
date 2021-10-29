@@ -6,7 +6,7 @@
 #    By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 15:34:29 by user42            #+#    #+#              #
-#    Updated: 2021/10/26 16:57:09 by groubaud         ###   ########.fr        #
+#    Updated: 2021/10/29 14:58:40 by groubaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ I_INC	=	-I $(DIR_FT)/include -I. -I $(DIR_MLX)
 
 INC_L	=	$(DIR_L)/include/
 INC_LIB	=	printf get_next_line libft
-INCLUDE	=	mlx.h ft_$(NAME).h
+INCLUDE	=	mlx.h ft_$(NAME).h ft_colors.h
 
 SRC		=	init_map free_list_map create_lstmap check map_err_msg \
 			so_long foreground_layer geometric_figure mlx_pixel_put \

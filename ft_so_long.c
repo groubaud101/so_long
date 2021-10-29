@@ -6,42 +6,70 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:26:42 by groubaud          #+#    #+#             */
-/*   Updated: 2021/10/26 16:58:07 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/29 16:02:27 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
+int	ft_close(int keycode, t_mlx *mlx)
+{
+	// int	x;
+	// int	y;
+
+	if (keycode != 53)
+		return (0);
+	// y = 0;
+	// while (ptr->map[y])
+	// 	free(ptr->map[y]);
+	// free(ptr->map);
+	// free(ptr);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img_ptr);
+	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	ft_printf("End of the game\n");
+	exit(0);
+}
+
+int	key_hook(int keycode, void *win_ptr)
+{
+	(void)win_ptr;
+	
+	ft_printf("keycode : %i\n", keycode);
+	return (1);
+}
+
 int	ft_so_long(t_so_long *ptr)
 {
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_data		img;
+	t_mlx		mlx;
 
 	ft_puttab(ptr->map, "\n");
-	mlx_ptr = mlx_init();
-	if (mlx_ptr == NULL)
+	mlx.mlx_ptr = mlx_init();
+	if (mlx.mlx_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_PTR));
 
-	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "test");	
-	if (win_ptr == NULL)
+	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, 1000, 1000, "test");	
+	if (mlx.win_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_WIN));
 
-	img.img_ptr = mlx_new_image(mlx_ptr, 1000, 1000);
-	if (img.img_ptr == NULL)
+	mlx.img_ptr = mlx_new_image(mlx.mlx_ptr, 1000, 1000);
+	if (mlx.img_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_IMG));
 
-	img.addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.line_length, &img.endian);
+	mlx.addr = mlx_get_data_addr(mlx.img_ptr, &mlx.bits_per_pixel, &mlx.line_length, &mlx.endian);
 
 
-	ft_foreground_layer(10, 10, ptr, &img);
+	ft_foreground_layer(10, 10, ptr, &mlx);
 
 	// ft_player_layer
 	// est ce que je créé une seconde image ?
 	//   mais je crains que ca ecrase celle du dessous (fond noir ?)
 
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img_ptr, 0, 0);
-	mlx_loop(mlx_ptr);
+	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
+
+	//mlx_key_hook(mlx.win_ptr, key_hook, &mlx);
+	mlx_hook(mlx.win_ptr, 2, 1L<<0, ft_close, &mlx);
+
+	mlx_loop(mlx.mlx_ptr);
 
 	return (CHECK_OK);
 }

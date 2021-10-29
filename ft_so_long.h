@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/10/26 17:04:02 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/29 15:53:05 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,24 @@ typedef struct s_floor_data
 {
 	int	len;
 	int	size;
+	int	i;
+	int	j;
+	int	color1;
+	int	color2;
+	int	design[7][7];
 }
 t_floor_data;
 
-typedef struct s_data
+typedef struct s_mlx
 {
+	void	*mlx_ptr;
+	void	*win_ptr;
 	void	*img_ptr;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}t_data;
+}t_mlx;
 
 typedef struct s_so_long
 {
@@ -98,21 +105,21 @@ int		ft_check_enough_object(t_map *ptr, int *nb_line);
 int		ft_map_err_msg(int num_err);
 
 // ft_mlx_pixel_put.c
-void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	ft_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 
 // ft_geometric_figure.c
-void	ft_rectangle(t_data *img, int start_x, int start_y,
+void	ft_rectangle(t_mlx *img, int start_x, int start_y,
 					int len_x, int len_y, int color);
 
 // ft_texture_wall.c
-void	ft_texture_wall(t_data *img, int start_x, int start_y, int half);
+void	ft_texture_wall(t_mlx *img, int start_x, int start_y, int half);
 
 // ft_texture_floor.c
-void	ft_texture_floor(t_data *img, int start_x, int start_y, int half);
+void	ft_texture_floor(t_mlx *img, int start_x, int start_y);
 
 // ft_foreground_layer.c
 void	ft_foreground_layer(int wall_start_x, int wall_start_y,
-							t_so_long *ptr, t_data *img);
+							t_so_long *ptr, t_mlx *img);
 
 // ft_so_long.c
 int		ft_so_long(t_so_long *ptr);

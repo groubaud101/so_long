@@ -6,13 +6,13 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:53:22 by groubaud          #+#    #+#             */
-/*   Updated: 2021/10/26 16:53:42 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/10/29 16:02:47 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	ft_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 {
 	char	*dst;
 
