@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/10/29 15:53:05 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/05 16:56:31 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_so_long
 	int		x_map;
 	int		y_map;
 	char	**map;
+	t_mlx	mlx;
 }t_so_long;
 
 void	*ft_free_list_map(t_map **start, int num_err);
