@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:26:42 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/05 17:03:51 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:56:42 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	ft_so_long(t_so_long *ptr)
 	ptr->mlx = mlx;
 	//mlx_key_hook(mlx.win_ptr, key_hook, &mlx);
 	mlx_hook(ptr->mlx.win_ptr, 2, 1L<<0, ft_escape_hook, ptr);
+	ft_movement_player(ptr);
 	mlx_hook(ptr->mlx.win_ptr, 17, 1L<<17, ft_close, ptr);
 
 	mlx_loop(mlx.mlx_ptr);

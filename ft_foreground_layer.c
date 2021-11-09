@@ -6,13 +6,13 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:25:17 by groubaud          #+#    #+#             */
-/*   Updated: 2021/10/29 15:49:58 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:47:03 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-void	ft_foreground_layer(int wall_start_x, int wall_start_y,
+void	ft_foreground_layer(int start_x, int start_y,
 							t_so_long *ptr, t_mlx *mlx)
 {
 	int	x;
@@ -25,14 +25,20 @@ void	ft_foreground_layer(int wall_start_x, int wall_start_y,
 		while (ptr->map[y][x])
 		{
 			if (ptr->map[y][x] == '1')
-				ft_texture_wall(mlx, wall_start_x, wall_start_y, 0);
+				ft_texture_wall(mlx, start_x, start_y, 0);
 			else if (ft_isinstr(ptr->map[y][x], SET_CHAR) >= 0)
-				ft_texture_floor(mlx, wall_start_x, wall_start_y);
-			wall_start_x += 42;
+				ft_texture_floor(mlx, start_x, start_y);
+			if (ptr->map[y][x] == 'P')
+			{
+				ptr->y_player = y;
+				ptr->x_player = x;
+				ft_texture_player(mlx, start_x, start_y);
+			}
+			start_x += 42;
 			x++;
 		} 
-		wall_start_y += 42;
-		wall_start_x = 10;
+		start_y += 42;
+		start_x = 10;
 		y++;
 	}
 }

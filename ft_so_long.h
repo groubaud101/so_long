@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/11/05 16:56:31 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:38:05 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@
 # define EXIT 'E'
 # define PLAYER 'P'
 # define COLECT 'C'
+
+# define W 13
+# define A 0
+# define S 1
+# define D 2
 
 typedef struct s_map
 {
@@ -90,6 +95,8 @@ typedef struct s_so_long
 	int		y_win;
 	int		x_map;
 	int		y_map;
+	int		x_player;
+	int		y_player;
 	char	**map;
 	t_mlx	mlx;
 }t_so_long;
@@ -118,9 +125,15 @@ void	ft_texture_wall(t_mlx *img, int start_x, int start_y, int half);
 // ft_texture_floor.c
 void	ft_texture_floor(t_mlx *img, int start_x, int start_y);
 
+// ft_texture_player.c
+void	ft_texture_player(t_mlx *mlx, int start_x, int start_y);
+
 // ft_foreground_layer.c
 void	ft_foreground_layer(int wall_start_x, int wall_start_y,
 							t_so_long *ptr, t_mlx *img);
+
+// ft_movement_player.c
+void	ft_movement_player(t_so_long *ptr);
 
 // ft_so_long.c
 int		ft_so_long(t_so_long *ptr);

@@ -6,7 +6,7 @@
 #    By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 15:34:29 by user42            #+#    #+#              #
-#    Updated: 2021/10/29 14:58:40 by groubaud         ###   ########.fr        #
+#    Updated: 2021/11/09 18:33:02 by groubaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ INCLUDE	=	mlx.h ft_$(NAME).h ft_colors.h
 
 SRC		=	init_map free_list_map create_lstmap check map_err_msg \
 			so_long foreground_layer geometric_figure mlx_pixel_put \
-			texture_wall texture_floor
+			texture_wall texture_floor texture_player movement_player
 
 OBJS	=	main.o $(addprefix $(DIR_S)ft_, $(addsuffix .o, $(SRC)))
 
