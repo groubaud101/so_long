@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/11/09 18:38:05 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/10 20:26:54 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_mlx
 
 typedef struct s_so_long
 {
+	int		nb_moves;
 	int		x_win;
 	int		y_win;
 	int		x_map;
@@ -133,9 +134,10 @@ void	ft_foreground_layer(int wall_start_x, int wall_start_y,
 							t_so_long *ptr, t_mlx *img);
 
 // ft_movement_player.c
-void	ft_movement_player(t_so_long *ptr);
+int		ft_movement_player(int keycode, t_so_long *ptr);
 
 // ft_so_long.c
+int	ft_close(t_so_long *ptr);
 int		ft_so_long(t_so_long *ptr);
 
 

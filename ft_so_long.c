@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:26:42 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/09 18:56:42 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/10 20:26:24 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_escape_hook(int keycode, t_so_long *ptr)
 	return (1);
 }
 
+// temp, I use it to know the keycode
 int	key_hook(int keycode, void *win_ptr)
 {
 	(void)win_ptr;
@@ -63,28 +64,30 @@ int	ft_init_mlx(t_mlx *mlx)
 	return (CHECK_OK);
 }
 
+int	ft_key_hook(int keycode, t_so_long *ptr)
+{
+	if (keycode == 53)
+		ft_close(ptr);
+	else
+		ft_movement_player(keycode, ptr);
+	return (1);
+}
+
 int	ft_so_long(t_so_long *ptr)
 {
-	t_mlx		mlx;
-
+	ptr->nb_moves = 0;
 	ft_puttab(ptr->map, "\n");
-	if (ft_init_mlx(&mlx) == CHECK_ERR)
+	if (ft_init_mlx(&ptr->mlx) == CHECK_ERR)
 		return (CHECK_ERR);
-	ft_foreground_layer(10, 10, ptr, &mlx);
+	ft_foreground_layer(10, 10, ptr, &ptr->mlx);
 
-	// ft_player_layer
-	// est ce que je créé une seconde image ?
-	//   mais je crains que ca n'ecrase celle du dessous (fond noir ?)
+	mlx_put_image_to_window(ptr->mlx.mlx_ptr, ptr->mlx.win_ptr, ptr->mlx.img_ptr, 0, 0);
 
-	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
-
-	ptr->mlx = mlx;
 	//mlx_key_hook(mlx.win_ptr, key_hook, &mlx);
-	mlx_hook(ptr->mlx.win_ptr, 2, 1L<<0, ft_escape_hook, ptr);
-	ft_movement_player(ptr);
+	mlx_hook(ptr->mlx.win_ptr, 2, 1L<<0, ft_key_hook, ptr);
 	mlx_hook(ptr->mlx.win_ptr, 17, 1L<<17, ft_close, ptr);
 
-	mlx_loop(mlx.mlx_ptr);
+	mlx_loop(ptr->mlx.mlx_ptr);
 
 	return (CHECK_OK);
 }
