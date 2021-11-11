@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:26:42 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/10 20:26:24 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:33:23 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ int	key_hook(int keycode, void *win_ptr)
 	return (1);
 }
 
-int	ft_init_mlx(t_mlx *mlx)
+int	ft_init_mlx(t_mlx *mlx, int x, int y)
 {
 	mlx->mlx_ptr = mlx_init();
 	if (mlx->mlx_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_PTR));
 
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, 1000, 1000, "test");	
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, x, y, "test");	
 	if (mlx->win_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_WIN));
 
-	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, 1000, 1000);
+	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, x, y);
 	if (mlx->img_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_IMG));
 
@@ -77,9 +77,9 @@ int	ft_so_long(t_so_long *ptr)
 {
 	ptr->nb_moves = 0;
 	ft_puttab(ptr->map, "\n");
-	if (ft_init_mlx(&ptr->mlx) == CHECK_ERR)
+	if (ft_init_mlx(&ptr->mlx, ptr->x_map, ptr->y_map) == CHECK_ERR)
 		return (CHECK_ERR);
-	ft_foreground_layer(10, 10, ptr, &ptr->mlx);
+	ft_foreground_layer(0, 0, ptr, &ptr->mlx);
 
 	mlx_put_image_to_window(ptr->mlx.mlx_ptr, ptr->mlx.win_ptr, ptr->mlx.img_ptr, 0, 0);
 

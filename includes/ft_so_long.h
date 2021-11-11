@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/11/11 16:27:19 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:45:01 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "ft_colors.h"
-
-# define DIR_MAP "./"
 
 # define LINE_NOT_ONLY_WALL 0
 # define MAP_NOT_FOUND 1
@@ -49,10 +47,10 @@
 # define PLAYER 'P'
 # define COLECT 'C'
 
-# define PLAYER_UP "PlayerUp.png"
-# define PLAYER_DOWN "PlayerDown.png"
-# define PLAYER_LEFT "PlayerLeft.png"
-# define PLAYER_RIGHT "PlayerRight.png"
+# define PLAYER_UP "sprites/PlayerUp.xpm"
+# define PLAYER_DOWN "sprites/PlayerDown.xpm"
+# define PLAYER_LEFT "sprites/PlayerLeft.xpm"
+# define PLAYER_RIGHT "sprites/PlayerRight.xpm"
 
 # define W 13
 # define A 0
@@ -106,8 +104,8 @@ typedef struct s_mlx
 typedef struct s_so_long
 {
 	int				nb_moves;
-	int				x_win;
-	int				y_win;
+	int				x_img;
+	int				y_img;
 	int				x_map;
 	int				y_map;
 	// int			x_player;

@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/11/11 16:25:38 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:36:53 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ char	**ft_init_map(char *path)
 	nb_line = 0;
 	if (ft_check_path(path) == CHECK_ERR)
 		return (NULL);
-	path = ft_strjoin(DIR_MAP, path);
 	fd = open(path, O_RDONLY);
-	free(path);
 	if (fd == -1)
 	{
 		ft_map_err_msg(FAIL_OPEN);

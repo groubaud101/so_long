@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:25:17 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/11 16:10:24 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:35:27 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_foreground_layer(int start_x, int start_y,
 			x++;
 		} 
 		start_y += 42;
-		start_x = 10;
+		start_x = 0;
 		y++;
 	}
 }
