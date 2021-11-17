@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:16:16 by groubaud          #+#    #+#             */
-/*   Updated: 2021/10/22 15:01:50 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/17 12:40:00 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static void	ft_error_mlx_msg(int num_err)
 	if (num_err == FAIL_MLX_PTR)
 		ft_putstr("Fail mlx init\n");
 	else if (num_err == FAIL_MLX_WIN)
-		ft_putstr("Faiure to create the window with mlx\n");
+		ft_putstr("Failure to create the window with mlx\n");
 	else if (num_err == FAIL_MLX_IMG)
-		ft_putstr("Faiure to create the image with mlx\n");
+		ft_putstr("Failure to create the image with mlx\n");
 }
 
 int	ft_map_err_msg(int num_err)

@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/11/11 17:45:01 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/17 12:40:33 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@
 # define PLAYER 'P'
 # define COLECT 'C'
 
-# define PLAYER_UP "sprites/PlayerUp.xpm"
-# define PLAYER_DOWN "sprites/PlayerDown.xpm"
-# define PLAYER_LEFT "sprites/PlayerLeft.xpm"
-# define PLAYER_RIGHT "sprites/PlayerRight.xpm"
+# define PLAYER_UP "./sprites/PlayerUp.png"
+# define PLAYER_DOWN "sprites/PlayerDown.png"
+# define PLAYER_LEFT "sprites/PlayerLeft.png"
+# define PLAYER_RIGHT "sprites/PlayerRight.png"
 
 # define W 13
 # define A 0
@@ -83,13 +83,6 @@ typedef struct s_floor_data
 }
 t_floor_data;
 
-typedef struct s_player_data
-{
-	int		x_player;
-	int		y_player;
-	char	*img_player;
-}t_player_data;
-
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
@@ -101,6 +94,14 @@ typedef struct s_mlx
 	int		endian;
 }t_mlx;
 
+typedef struct s_player_data
+{
+	int		x_player;
+	int		y_player;
+	char	*path_img_player;
+	t_mlx	mlx_player;
+}t_player_data;
+
 typedef struct s_so_long
 {
 	int				nb_moves;
@@ -108,8 +109,6 @@ typedef struct s_so_long
 	int				y_img;
 	int				x_map;
 	int				y_map;
-	// int			x_player;
-	// int		y_player;
 	char			**map;
 	t_player_data	player;
 	t_mlx			mlx;

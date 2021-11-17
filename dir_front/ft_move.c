@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:02:46 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/11 16:07:05 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/17 11:29:43 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_move_up(t_so_long *ptr)
 {
-	ptr->player.img_player = PLAYER_UP;
+	ptr->player.path_img_player = PLAYER_UP;
 	if (ptr->map[ptr->player.y_player - 1][ptr->player.x_player] == WALL)
 		return ;
 	ptr->player.y_player--;
@@ -22,7 +22,7 @@ void	ft_move_up(t_so_long *ptr)
 
 void	ft_move_down(t_so_long *ptr)
 {
-	ptr->player.img_player = PLAYER_DOWN;
+	ptr->player.path_img_player = PLAYER_DOWN;
 	if (ptr->map[ptr->player.y_player + 1][ptr->player.x_player] == WALL)
 		return ;
 	ptr->player.y_player++;
@@ -30,7 +30,7 @@ void	ft_move_down(t_so_long *ptr)
 
 void	ft_move_left(t_so_long *ptr)
 {
-	ptr->player.img_player = PLAYER_LEFT;
+	ptr->player.path_img_player = PLAYER_LEFT;
 	if (ptr->map[ptr->player.y_player][ptr->player.x_player - 1] == WALL)
 		return ;
 	ptr->player.x_player--;
@@ -38,7 +38,7 @@ void	ft_move_left(t_so_long *ptr)
 
 void	ft_move_right(t_so_long *ptr)
 {
-	ptr->player.img_player = PLAYER_RIGHT;
+	ptr->player.path_img_player = PLAYER_RIGHT;
 	if (ptr->map[ptr->player.y_player][ptr->player.x_player + 1] == WALL)
 		return ;
 	ptr->player.x_player++;
