@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:28:07 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/17 13:01:10 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/23 14:32:25 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		ft_recreate_img(t_mlx *mlx, t_so_long *ptr)
 	mlx->addr = mlx_get_data_addr(mlx->img_ptr, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 
 	ft_foreground_layer(0, 0, ptr, mlx);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img_ptr, 0, 0);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img_ptr, ptr->player.x_player, ptr->player.y_player);
 	return (CHECK_OK);
 }
 
@@ -44,10 +44,10 @@ int	ft_movement_player(int keycode, t_so_long *ptr)
 
 	ptr->map[ptr->player.y_player][ptr->player.x_player] = PLAYER;
 
-	if (ft_recreate_img(&ptr->mlx, ptr) == CHECK_ERR)
-		exit (0); // a changer, faut free et tout
-	// if (ft_recreate_img(&ptr->player.mlx_player, ptr) == CHECK_ERR)
+	// if (ft_recreate_img(&ptr->mlx, ptr) == CHECK_ERR)
 	// 	exit (0); // a changer, faut free et tout
+	if (ft_recreate_img(&ptr->player.mlx_player, ptr) == CHECK_ERR)
+		exit (0); // a changer, faut free et tout
 
 	if (origin != ptr->player.y_player + ptr->player.x_player)
 		ft_printf("You have made %i moves\n", ++ptr->nb_moves);
