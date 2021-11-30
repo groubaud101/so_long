@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:25:17 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/30 15:22:57 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:14:14 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,12 @@ void	ft_foreground_layer(int start_x, int start_y,
 		x = 0;
 		while (ptr->map[y][x])
 		{
-			if (ptr->map[y][x] == '1')
+			if (ptr->map[y][x] == WALL)
 				ft_texture_wall(mlx, start_x, start_y, 0);
 			else if (ft_isinstr(ptr->map[y][x], SET_CHAR) >= 0)
 				ft_texture_floor(mlx, start_x, start_y);
-			if (ptr->map[y][x] == 'P')
-			{
-				ptr->player.y_player = y;
-				ptr->player.x_player = x;
-
-				//ft_texture_player(mlx, start_x, start_y);
-			}
+			if (ptr->map[y][x] == EXIT)
+				ft_texture_player(mlx, start_x, start_y);
 			start_x += 42;
 			x++;
 		} 

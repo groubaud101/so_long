@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/11/17 12:40:33 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:03:46 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,10 @@ typedef struct s_player_data
 {
 	int		x_player;
 	int		y_player;
+	int		x;
+	int		y;
 	char	*path_img_player;
+	void	*img_player;
 	t_mlx	mlx_player;
 }t_player_data;
 
@@ -110,6 +113,7 @@ typedef struct s_so_long
 	int				x_map;
 	int				y_map;
 	char			**map;
+	int				collectible;
 	t_player_data	player;
 	t_mlx			mlx;
 }t_so_long;
@@ -155,7 +159,7 @@ void	ft_move_left(t_so_long *ptr);
 void	ft_move_right(t_so_long *ptr);
 
 // ft_so_long.c
-int	ft_close(t_so_long *ptr);
+int		ft_close(t_so_long *ptr);
 int		ft_so_long(t_so_long *ptr);
 
 

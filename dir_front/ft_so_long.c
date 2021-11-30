@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:26:42 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/30 16:11:01 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:58:14 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int	ft_init_mlx(t_mlx *mlx, int x, int y)
 	return (CHECK_OK);
 }
 
-int	ft_init_img_sprite(t_mlx *mlx, t_mlx *mlx_player, int x, int y)
+int	ft_init_img_sprite(t_mlx *mlx, t_mlx *mlx_player, t_so_long *ptr)
 {
-	mlx_player->img_ptr = mlx_png_file_to_image(mlx->mlx_ptr, PLAYER_UP, &x, &y);
+	mlx_player->img_ptr = mlx_png_file_to_image(mlx->mlx_ptr, PLAYER_UP, &ptr->player.x, &ptr->player.y);
 	if (mlx_player->img_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_IMG));
 
@@ -88,10 +88,8 @@ int	ft_so_long(t_so_long *ptr)
 	ft_puttab(ptr->map, "\n");
 	if (ft_init_mlx(&ptr->mlx, ptr->x_map, ptr->y_map) == CHECK_ERR)
 		return (CHECK_ERR);
-	int	x = 0;
-	int	y = 0;
 
-	if (ft_init_img_sprite(&ptr->mlx, &ptr->player.mlx_player, x, y) == CHECK_ERR)
+	if (ft_init_img_sprite(&ptr->mlx, &ptr->player.mlx_player, ptr) == CHECK_ERR)
 		return (CHECK_ERR);
 
 	ft_foreground_layer(0, 0, ptr, &ptr->mlx);

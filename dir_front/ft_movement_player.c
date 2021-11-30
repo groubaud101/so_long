@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:28:07 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/30 16:10:26 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:16:52 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 static int		ft_recreate_img(t_mlx *mlx, t_mlx *mlx_player, t_so_long *ptr)
 {
-	int	x;
-	int	y;
-
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_ptr);
 	mlx_destroy_image(mlx->mlx_ptr, mlx_player->img_ptr);
 
@@ -24,7 +21,8 @@ static int		ft_recreate_img(t_mlx *mlx, t_mlx *mlx_player, t_so_long *ptr)
 	if (mlx->img_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_IMG));
 
-	mlx_player->img_ptr = mlx_png_file_to_image(mlx->mlx_ptr, ptr->player.path_img_player, &x, &y);
+	mlx_player->img_ptr = mlx_png_file_to_image(mlx->mlx_ptr,
+		ptr->player.path_img_player, &ptr->player.x, &ptr->player.y);
 	if (mlx_player->img_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_IMG));
 
@@ -44,7 +42,7 @@ int	ft_movement_player(int keycode, t_so_long *ptr)
 
 	origin = ptr->player.y_player + ptr->player.x_player;
 
-	ptr->map[ptr->player.y_player][ptr->player.x_player] = FLOOR;
+	//ptr->map[ptr->player.y_player][ptr->player.x_player] = FLOOR;
 
 	if (keycode == W)
 		ft_move_up(ptr);
@@ -55,12 +53,21 @@ int	ft_movement_player(int keycode, t_so_long *ptr)
 	else if (keycode == D)
 		ft_move_right(ptr);
 
-	ptr->map[ptr->player.y_player][ptr->player.x_player] = PLAYER;
+	//ptr->map[ptr->player.y_player][ptr->player.x_player] = PLAYER;
 
 	if (ft_recreate_img(&ptr->mlx, &ptr->player.mlx_player, ptr) == CHECK_ERR)
 		exit (0); // a changer, faut free et tout
 
 	if (origin != ptr->player.y_player + ptr->player.x_player)
-		ft_printf("You have made %i moves\n", ++ptr->nb_moves);
+		ft_printf("You have made %i moves, il reste %i col\n", ++ptr->nb_moves, ptr->collectible);
+
+	if (ptr->map[ptr->player.y_player][ptr->player.x_player] == COLECT)
+	{
+		ptr->collectible--;
+		ptr->map[ptr->player.y_player][ptr->player.x_player] = FLOOR;
+	}
+
+	if (ptr->collectible == 0 && ptr->map[ptr->player.y_player][ptr->player.x_player] == EXIT)
+		exit (0); // ft_exit
 	return (1);
 }
