@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:26:42 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/23 14:28:39 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:11:01 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_init_mlx(t_mlx *mlx, int x, int y)
 	if (mlx->mlx_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_PTR));
 
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, x, y, "test");	
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, x, y, "so_long");	
 	if (mlx->win_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_WIN));
 
@@ -63,14 +63,13 @@ int	ft_init_mlx(t_mlx *mlx, int x, int y)
 	return (CHECK_OK);
 }
 
-int	ft_init_img_sprite(t_mlx *mlx, int x, int y)
+int	ft_init_img_sprite(t_mlx *mlx, t_mlx *mlx_player, int x, int y)
 {
-	mlx->mlx_ptr = mlx_init();
-	mlx->img_ptr = mlx_png_file_to_image(mlx->mlx_ptr, PLAYER_UP, &x, &y);
-	if (mlx->img_ptr == NULL)
+	mlx_player->img_ptr = mlx_png_file_to_image(mlx->mlx_ptr, PLAYER_UP, &x, &y);
+	if (mlx_player->img_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_IMG));
 
-	mlx->addr = mlx_get_data_addr(mlx->img_ptr, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	mlx_player->addr = mlx_get_data_addr(mlx->img_ptr, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	return (CHECK_OK);
 }
 
@@ -92,13 +91,14 @@ int	ft_so_long(t_so_long *ptr)
 	int	x = 0;
 	int	y = 0;
 
-	if (ft_init_img_sprite(&ptr->player.mlx_player, x, y) == CHECK_ERR)
+	if (ft_init_img_sprite(&ptr->mlx, &ptr->player.mlx_player, x, y) == CHECK_ERR)
 		return (CHECK_ERR);
 
 	ft_foreground_layer(0, 0, ptr, &ptr->mlx);
 
 	mlx_put_image_to_window(ptr->mlx.mlx_ptr, ptr->mlx.win_ptr, ptr->mlx.img_ptr, 0, 0);
-	mlx_put_image_to_window(ptr->player.mlx_player.mlx_ptr, ptr->mlx.win_ptr, ptr->player.mlx_player.img_ptr, 0, 0);
+	mlx_put_image_to_window(ptr->mlx.mlx_ptr, ptr->mlx.win_ptr, ptr->player.mlx_player.img_ptr,
+		ptr->player.x_player * 42 + 15, ptr->player.y_player * 42 + 13);
 
 	//mlx_key_hook(mlx.win_ptr, key_hook, &mlx); // connaitre la touche
 	mlx_hook(ptr->mlx.win_ptr, 2, 1L<<0, ft_key_hook, ptr);
