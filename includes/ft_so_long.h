@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/11/30 17:03:46 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:43:34 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define WALL '1'
 # define EXIT 'E'
 # define PLAYER 'P'
-# define COLECT 'C'
+# define COLLECT 'C'
 
 # define PLAYER_UP "./sprites/PlayerUp.png"
 # define PLAYER_DOWN "sprites/PlayerDown.png"
@@ -133,6 +133,8 @@ int		ft_map_err_msg(int num_err);
 void	ft_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 
 // ft_geometric_figure.c
+void	ft_diamond(t_mlx *mlx, int start_x, int start_y,
+					int size, int color);
 void	ft_rectangle(t_mlx *img, int start_x, int start_y,
 					int len_x, int len_y, int color);
 
@@ -142,8 +144,11 @@ void	ft_texture_wall(t_mlx *img, int start_x, int start_y, int half);
 // ft_texture_floor.c
 void	ft_texture_floor(t_mlx *img, int start_x, int start_y);
 
-// ft_texture_player.c
-void	ft_texture_player(t_mlx *mlx, int start_x, int start_y);
+// ft_texture_exit.c
+void	ft_texture_exit(t_mlx *mlx, int start_x, int start_y);
+
+// ft_texture_collectible.c
+void	ft_texture_collectible(t_mlx *mlx, int start_x, int start_y);
 
 // ft_foreground_layer.c
 void	ft_foreground_layer(int wall_start_x, int wall_start_y,
@@ -153,10 +158,10 @@ void	ft_foreground_layer(int wall_start_x, int wall_start_y,
 int		ft_movement_player(int keycode, t_so_long *ptr);
 
 // ft_move.c
-void	ft_move_up(t_so_long *ptr);
-void	ft_move_down(t_so_long *ptr);
-void	ft_move_left(t_so_long *ptr);
-void	ft_move_right(t_so_long *ptr);
+int		ft_move_up(t_so_long *ptr);
+int		ft_move_down(t_so_long *ptr);
+int		ft_move_left(t_so_long *ptr);
+int		ft_move_right(t_so_long *ptr);
 
 // ft_so_long.c
 int		ft_close(t_so_long *ptr);

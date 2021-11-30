@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:26:42 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/30 16:58:14 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:19:50 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,9 @@ int	ft_so_long(t_so_long *ptr)
 
 	ft_foreground_layer(0, 0, ptr, &ptr->mlx);
 
-	mlx_put_image_to_window(ptr->mlx.mlx_ptr, ptr->mlx.win_ptr, ptr->mlx.img_ptr, 0, 0);
 	mlx_put_image_to_window(ptr->mlx.mlx_ptr, ptr->mlx.win_ptr, ptr->player.mlx_player.img_ptr,
 		ptr->player.x_player * 42 + 15, ptr->player.y_player * 42 + 13);
 
-	//mlx_key_hook(mlx.win_ptr, key_hook, &mlx); // connaitre la touche
 	mlx_hook(ptr->mlx.win_ptr, 2, 1L<<0, ft_key_hook, ptr);
 	mlx_hook(ptr->mlx.win_ptr, 17, 1L<<17, ft_close, ptr);
 

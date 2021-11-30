@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:06:40 by user42            #+#    #+#             */
-/*   Updated: 2021/11/09 18:08:19 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:25:35 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_check_enough_object(t_map *ptr, int *nb_line)
 		{
 			p += (ptr->line[i] == PLAYER);
 			e += (ptr->line[i] == EXIT);
-			c += (ptr->line[i] == COLECT);
+			c += (ptr->line[i] == COLLECT);
 			i++;
 		}
 		(*nb_line)++;

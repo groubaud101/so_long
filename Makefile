@@ -6,7 +6,7 @@
 #    By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 15:34:29 by user42            #+#    #+#              #
-#    Updated: 2021/11/11 16:17:59 by groubaud         ###   ########.fr        #
+#    Updated: 2021/11/30 19:21:03 by groubaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,8 @@ I_INC	=	-I $(D_INC_L) -I $(D_INC)
 
 S_BACK	=	init_map free_list_map create_lstmap check map_err_msg
 S_FRONT	=	so_long foreground_layer geometric_figure mlx_pixel_put \
-			texture_wall texture_floor texture_player movement_player \
-			move
+			texture_wall texture_floor texture_exit texture_collectible \
+			movement_player move
 SRCS	=	$(addprefix $(D_BACK)ft_, $(addsuffix .c, $(S_BACK))) \
 			$(addprefix $(D_FRONT)ft_, $(addsuffix .c, $(S_FRONT)))
 

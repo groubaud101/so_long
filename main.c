@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 15:24:09 by user42            #+#    #+#             */
-/*   Updated: 2021/11/30 17:10:07 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:25:12 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_define_data_ptr(t_so_long *ptr)
 		x = -1;
 		while (ptr->map[y][++x])
 		{
-			if (ptr->map[y][x] == COLECT)
+			if (ptr->map[y][x] == COLLECT)
 				ptr->collectible++;
 			else if (ptr->map[y][x] == PLAYER)
 				ft_set_player(x, y, ptr, yet_player);
