@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:26:42 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/30 19:19:50 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:59:21 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_init_mlx(t_mlx *mlx, int x, int y)
 
 int	ft_init_img_sprite(t_mlx *mlx, t_mlx *mlx_player, t_so_long *ptr)
 {
-	mlx_player->img_ptr = mlx_png_file_to_image(mlx->mlx_ptr, PLAYER_UP, &ptr->player.x, &ptr->player.y);
+	mlx_player->img_ptr = mlx_png_file_to_image(mlx->mlx_ptr, PLAYER_DOWN, &ptr->player.x, &ptr->player.y);
 	if (mlx_player->img_ptr == NULL)
 		return (ft_map_err_msg(FAIL_MLX_IMG));
 

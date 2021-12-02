@@ -6,29 +6,19 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:31:38 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/30 20:40:34 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/02 19:06:56 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-// var dx = Math.abs(coords[0] - middle[0]);
-// var dy = Math.abs(coords[1] - middle[1]);
-// if (dx / size[0] + dy / size[1] <= 1)
-//   alert("Inside diamond");
-// else
-//   alert("Outside diamond");
-
 int		ft_check_diamond(int x, int y, int size)
 {
-	int dx;
-	int	dy;
+	int		half;
 
-	dx = ft_abs(x - (size / 2));
-	dy = ft_abs(y - (size / 2));
-	if (((dx / size) + (dy / size)) * 2 <= 1) 
-	// if (((y <= size / 2) && x >= (size / 2 - y) && x <= (size / 2 + y))
-	// 	|| ((y > size / 2) && x >= y - size / 2 && x / 2 < size - y))
+	half = size / 2;
+	if (x != half && ((y < half && x > half - y && x < half + y)
+		|| (y > half && x > y - (size / 2) && size + half - x > y)))
 		return (CHECK_OK);
 	return (CHECK_ERR);
 }

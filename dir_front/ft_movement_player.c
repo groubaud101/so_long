@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:28:07 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/30 19:24:52 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/02 19:26:28 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	ft_movement_player(int keycode, t_so_long *ptr)
 		change = ft_move_down(ptr);
 	else if (keycode == D)
 		change = ft_move_right(ptr);
+	else
+		return (1);
 
 	if (ptr->map[ptr->player.y_player][ptr->player.x_player] == COLLECT)
 	{
@@ -60,7 +62,6 @@ int	ft_movement_player(int keycode, t_so_long *ptr)
 
 	if (change == 1)
 		ft_printf("You have made %i moves, il reste %i col\n", ++ptr->nb_moves, ptr->collectible);
-
 
 	if (ptr->collectible == 0 && ptr->map[ptr->player.y_player][ptr->player.x_player] == EXIT)
 		exit (0); // ft_exit
