@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/11/30 20:43:34 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/02 20:33:49 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ typedef struct s_wall_data
 	int	len_x;
 	int	len_y;
 	int	size;
-}
-t_wall_data;
+}t_wall_data;
 
 typedef struct s_floor_data
 {
@@ -80,8 +79,7 @@ typedef struct s_floor_data
 	int	color1;
 	int	color2;
 	int	design[7][7];
-}
-t_floor_data;
+}t_floor_data;
 
 typedef struct s_mlx
 {
@@ -134,9 +132,9 @@ void	ft_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 
 // ft_geometric_figure.c
 void	ft_diamond(t_mlx *mlx, int start_x, int start_y,
-					int size, int color);
+			int size, int color);
 void	ft_rectangle(t_mlx *img, int start_x, int start_y,
-					int len_x, int len_y, int color);
+			int len_x, int len_y, int color);
 
 // ft_texture_wall.c
 void	ft_texture_wall(t_mlx *img, int start_x, int start_y, int half);
@@ -152,7 +150,7 @@ void	ft_texture_collectible(t_mlx *mlx, int start_x, int start_y);
 
 // ft_foreground_layer.c
 void	ft_foreground_layer(int wall_start_x, int wall_start_y,
-							t_so_long *ptr, t_mlx *img);
+			t_so_long *ptr, t_mlx *img);
 
 // ft_movement_player.c
 int		ft_movement_player(int keycode, t_so_long *ptr);
@@ -163,10 +161,10 @@ int		ft_move_down(t_so_long *ptr);
 int		ft_move_left(t_so_long *ptr);
 int		ft_move_right(t_so_long *ptr);
 
-// ft_so_long.c
+// ft_close.c
 int		ft_close(t_so_long *ptr);
+
+// ft_so_long.c
 int		ft_so_long(t_so_long *ptr);
-
-
 
 #endif

@@ -6,22 +6,17 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 15:24:09 by user42            #+#    #+#             */
-/*   Updated: 2021/11/30 19:25:12 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/02 20:19:28 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
-//#include <stddef.h>
 
-//mlx_new_window (void *mlx_ptr, int size_x, int size_y, char *title)
-//mlx_clear_window  (void *mlx_ptr, void *win_ptr)
-//mlx_destroy_window  (void *mlx_ptr, void *win_ptr)
-
-void	ft_set_player(int x, int y, t_so_long *ptr, int yet_player)
+void	ft_set_player(int x, int y, t_so_long *ptr, int *yet_player)
 {
-	if (yet_player == 0)
+	if (*yet_player == 0)
 	{
-		yet_player = 1;
+		*yet_player = 1;
 		ptr->player.x_player = x;
 		ptr->player.y_player = y;
 	}
@@ -46,14 +41,14 @@ void	ft_define_data_ptr(t_so_long *ptr)
 			if (ptr->map[y][x] == COLLECT)
 				ptr->collectible++;
 			else if (ptr->map[y][x] == PLAYER)
-				ft_set_player(x, y, ptr, yet_player);
+				ft_set_player(x, y, ptr, &yet_player);
 		}
 	}
 	ptr->x_map = x * 42;
 	ptr->y_map = y * 42;
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_so_long	ptr;
 
@@ -65,11 +60,7 @@ int main(int ac, char **av)
 	ptr.map = ft_init_map(av[1]);
 	if (ptr.map == NULL)
 		return (1);
-
 	ft_define_data_ptr(&ptr);
-	ft_printf("x_map : %i, y_map : %i\n", ptr.x_map, ptr.y_map);
 	ft_so_long(&ptr);
-	// free ptr.map
-	ft_printf("OK map\n");
 	return (0);
 }

@@ -6,19 +6,19 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:31:38 by groubaud          #+#    #+#             */
-/*   Updated: 2021/12/02 19:06:56 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/02 20:22:59 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-int		ft_check_diamond(int x, int y, int size)
+int	ft_check_diamond(int x, int y, int size)
 {
 	int		half;
 
 	half = size / 2;
 	if (x != half && ((y < half && x > half - y && x < half + y)
-		|| (y > half && x > y - (size / 2) && size + half - x > y)))
+			|| (y > half && x > y - (size / 2) && size + half - x > y)))
 		return (CHECK_OK);
 	return (CHECK_ERR);
 }
