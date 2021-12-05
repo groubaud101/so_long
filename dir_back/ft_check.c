@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 19:06:40 by user42            #+#    #+#             */
-/*   Updated: 2021/11/30 19:25:35 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/05 15:51:49 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_check_first_and_last_line(char *line)
 	int	i;
 
 	i = 0;
-	if (!line)
+	if (!line || !*line)
 		return (ft_map_err_msg(NO_MAP));
 	while (line[i])
 	{
