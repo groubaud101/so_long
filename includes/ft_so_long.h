@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:11:37 by user42            #+#    #+#             */
-/*   Updated: 2021/12/02 20:33:49 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/05 15:21:42 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define PLAYER 'P'
 # define COLLECT 'C'
 
-# define PLAYER_UP "./sprites/PlayerUp.png"
+# define PLAYER_UP "sprites/PlayerUp.png"
 # define PLAYER_DOWN "sprites/PlayerDown.png"
 # define PLAYER_LEFT "sprites/PlayerLeft.png"
 # define PLAYER_RIGHT "sprites/PlayerRight.png"
@@ -63,11 +63,23 @@ typedef struct s_map
 	struct s_map	*next;
 }t_map;
 
+typedef struct s_norm
+{
+	int	start_x;
+	int	start_y;
+	int	len_x;
+	int	len_y;
+}t_norm;
+
 typedef struct s_wall_data
 {
 	int	len_x;
 	int	len_y;
 	int	size;
+	int	start_x;
+	int	start_y;
+	int	x;
+	int	y;
 }t_wall_data;
 
 typedef struct s_floor_data
@@ -116,25 +128,33 @@ typedef struct s_so_long
 	t_mlx			mlx;
 }t_so_long;
 
+// ft_free_lstmap.c
 void	*ft_free_list_map(t_map **start, int num_err);
+
+// ft_init_map.c
 char	**ft_init_map(char *path);
 
+// ft_create_lstmap.c
 t_map	*ft_create_lstmap(int fd);
 
+// ft_check.c
 int		ft_check_path(char *path);
 int		ft_check_first_and_last_line(char *line);
 int		ft_check_correct_line(char *set, char *line);
 int		ft_check_enough_object(t_map *ptr, int *nb_line);
+
+// ft_map_err_msg.c
 int		ft_map_err_msg(int num_err);
+
+// ft_define_data_ptr.c
+void	ft_define_data_ptr(t_so_long *ptr);
 
 // ft_mlx_pixel_put.c
 void	ft_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 
 // ft_geometric_figure.c
-void	ft_diamond(t_mlx *mlx, int start_x, int start_y,
-			int size, int color);
-void	ft_rectangle(t_mlx *img, int start_x, int start_y,
-			int len_x, int len_y, int color);
+void	ft_diamond(t_mlx *mlx, t_norm norm, int color);
+void	ft_rectangle(t_mlx *img, t_norm norm, int color);
 
 // ft_texture_wall.c
 void	ft_texture_wall(t_mlx *img, int start_x, int start_y, int half);
@@ -163,6 +183,9 @@ int		ft_move_right(t_so_long *ptr);
 
 // ft_close.c
 int		ft_close(t_so_long *ptr);
+
+// ft_set_norm_value.c
+t_norm	ft_set_norm_value(int start_x, int start_y, int len_x, int len_y);
 
 // ft_so_long.c
 int		ft_so_long(t_so_long *ptr);

@@ -6,7 +6,7 @@
 #    By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 15:34:29 by user42            #+#    #+#              #
-#    Updated: 2021/12/02 20:29:00 by groubaud         ###   ########.fr        #
+#    Updated: 2021/12/05 15:06:18 by groubaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,11 @@ INCLUDE	=	$(addprefix $(D_INC_L), $(addsuffix .h, $(INC_LIB))) \
 
 I_INC	=	-I $(D_INC_L) -I $(D_INC)
 
-S_BACK	=	init_map free_list_map create_lstmap check map_err_msg
+S_BACK	=	init_map free_list_map create_lstmap check map_err_msg \
+			define_data_ptr
 S_FRONT	=	so_long foreground_layer geometric_figure mlx_pixel_put \
 			texture_wall texture_floor texture_exit texture_collectible \
-			movement_player move close
+			movement_player move close set_norm_value
 SRCS	=	$(addprefix $(D_BACK)ft_, $(addsuffix .c, $(S_BACK))) \
 			$(addprefix $(D_FRONT)ft_, $(addsuffix .c, $(S_FRONT)))
 

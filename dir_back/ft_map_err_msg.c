@@ -6,12 +6,11 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:16:16 by groubaud          #+#    #+#             */
-/*   Updated: 2021/11/17 12:40:00 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:18:11 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
-#include "libft.h"
 
 static void	ft_format_map_msg(int num_err)
 {

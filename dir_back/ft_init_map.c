@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/11/11 17:36:53 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:08:10 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
+
+static char	**ft_free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+	return (NULL);
+}
 
 static char	**ft_tab_map(t_map *ptr, int nb_line)
 {
@@ -29,7 +40,7 @@ static char	**ft_tab_map(t_map *ptr, int nb_line)
 	{
 		tab[i] = ft_strdup(ptr->line);
 		if (!tab[i])
-			return (NULL);
+			return (ft_free_tab(tab));
 		i++;
 		ptr = ptr->next;
 	}

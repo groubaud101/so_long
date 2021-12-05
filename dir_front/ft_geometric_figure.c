@@ -6,7 +6,7 @@
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:31:38 by groubaud          #+#    #+#             */
-/*   Updated: 2021/12/02 20:22:59 by groubaud         ###   ########.fr       */
+/*   Updated: 2021/12/05 15:24:09 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ int	ft_check_diamond(int x, int y, int size)
 	return (CHECK_ERR);
 }
 
-void	ft_diamond(t_mlx *mlx, int start_x, int start_y,
-					int size, int color)
+void	ft_diamond(t_mlx *mlx, t_norm norm, int color)
 {
 	int	x;
 	int	y;
+	int	size;
 
+	size = norm.len_x;
 	y = 0;
 	while (y < size)
 	{
@@ -36,24 +37,24 @@ void	ft_diamond(t_mlx *mlx, int start_x, int start_y,
 		while (x < size)
 		{
 			if (ft_check_diamond(x, y, size) == CHECK_OK)
-				ft_mlx_pixel_put(mlx, x + start_x, y + start_y, color);
+				ft_mlx_pixel_put(mlx, x + norm.start_x, y + norm.start_y,
+					color);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	ft_rectangle(t_mlx *mlx, int start_x, int start_y,
-					int len_x, int len_y, int color)
+void	ft_rectangle(t_mlx *mlx, t_norm norm, int color)
 {
 	int	x;
 	int	y;
 
-	y = start_y;
-	while (y < start_y + len_y)
+	y = norm.start_y;
+	while (y < norm.start_y + norm.len_y)
 	{
-		x = start_x;
-		while (x < start_x + len_x)
+		x = norm.start_x;
+		while (x < norm.start_x + norm.len_x)
 			ft_mlx_pixel_put(mlx, x++, y, color);
 		y++;
 	}

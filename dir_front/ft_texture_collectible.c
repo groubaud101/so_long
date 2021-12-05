@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_texture_collectible.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/31 15:24:09 by user42            #+#    #+#             */
-/*   Updated: 2021/12/05 14:39:55 by groubaud         ###   ########.fr       */
+/*   Created: 2021/11/30 19:29:23 by groubaud          #+#    #+#             */
+/*   Updated: 2021/12/05 14:55:58 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-int	main(int ac, char **av)
+void	ft_texture_collectible(t_mlx *mlx, int start_x, int start_y)
 {
-	t_so_long	ptr;
+	t_norm	norm;
 
-	if (ac < 2)
-	{
-		ft_putstr("Error\nWhere is the map ?\n");
-		return (1);
-	}
-	ptr.map = ft_init_map(av[1]);
-	if (ptr.map == NULL)
-		return (1);
-	ft_define_data_ptr(&ptr);
-	ft_so_long(&ptr);
-	return (0);
+	norm = ft_set_norm_value(start_x + 11, start_y + 11, 20, 0);
+	ft_diamond(mlx, norm, BLACK);
 }

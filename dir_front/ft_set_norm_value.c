@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_set_norm_value.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/31 15:24:09 by user42            #+#    #+#             */
-/*   Updated: 2021/12/05 14:39:55 by groubaud         ###   ########.fr       */
+/*   Created: 2021/12/05 14:46:44 by groubaud          #+#    #+#             */
+/*   Updated: 2021/12/05 15:06:57 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-int	main(int ac, char **av)
+t_norm	ft_set_norm_value(int start_x, int start_y, int len_x, int len_y)
 {
-	t_so_long	ptr;
+	t_norm	norm;
 
-	if (ac < 2)
-	{
-		ft_putstr("Error\nWhere is the map ?\n");
-		return (1);
-	}
-	ptr.map = ft_init_map(av[1]);
-	if (ptr.map == NULL)
-		return (1);
-	ft_define_data_ptr(&ptr);
-	ft_so_long(&ptr);
-	return (0);
+	norm.start_x = start_x;
+	norm.start_y = start_y;
+	norm.len_x = len_x;
+	norm.len_y = len_y;
+	return (norm);
 }

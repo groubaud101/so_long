@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: groubaud <groubaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/31 15:24:09 by user42            #+#    #+#             */
-/*   Updated: 2021/12/05 14:39:55 by groubaud         ###   ########.fr       */
+/*   Created: 2021/12/02 20:27:49 by groubaud          #+#    #+#             */
+/*   Updated: 2021/12/05 14:40:57 by groubaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
 
-int	main(int ac, char **av)
+int	ft_close(t_so_long *ptr)
 {
-	t_so_long	ptr;
+	int	y;
 
-	if (ac < 2)
-	{
-		ft_putstr("Error\nWhere is the map ?\n");
-		return (1);
-	}
-	ptr.map = ft_init_map(av[1]);
-	if (ptr.map == NULL)
-		return (1);
-	ft_define_data_ptr(&ptr);
-	ft_so_long(&ptr);
-	return (0);
+	y = 0;
+	while (ptr->map[y])
+		free(ptr->map[y++]);
+	free(ptr->map);
+	mlx_destroy_image(ptr->mlx.mlx_ptr, ptr->mlx.img_ptr);
+	mlx_destroy_image(ptr->mlx.mlx_ptr, ptr->player.mlx_player.img_ptr);
+	mlx_destroy_window(ptr->mlx.mlx_ptr, ptr->mlx.win_ptr);
+	ft_printf("End of the game\n");
+	exit(0);
 }
